@@ -2,21 +2,26 @@
   "name": "icarus_electron",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "main": "electron/main.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "electron": "wait-on tcp:5173 && electron . --mode=development",
+    "electron:serve": "concurrently -k \"npm run dev\" \"npm run electron\""
   },
   "dependencies": {
     "vue": "^3.2.41"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.2.0",
+    "concurrently": "^7.6.0",
     "electron": "^22.0.0",
-    "electron-builder": "^23.6.0",
+    "electron-builder": "^22.10.3",
     "electron-devtools-installer": "^3.2.0",
+    "rimraf": "^3.0.2",
     "vite": "^3.2.3",
-    "vite-plugin-electron": "^0.10.4"
+    "vite-plugin-electron": "^0.10.4",
+    "wait-on": "^6.0.1"
   }
 }
