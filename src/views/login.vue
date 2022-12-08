@@ -1,53 +1,55 @@
 <template>
-    <a-layout class="login-wrapper">
-        <!-- <a-layout-header>
+    <div :style="{ width: fullWidth + 'px', height: fullHeight + 'px' }">
+        <a-layout class="login-wrapper">
+            <!-- <a-layout-header>
         </a-layout-header> -->
-        <a-layout-content>
-            <div class="icarus-login">
-                <div class="icarus-title">Login</div>
-                <a-form :model="formState" name="normal_login" autocomplete="off" @finish="onFinish"
-                    @finishFailed="onFinishFailed" class="login-form">
-                    <a-form-item label="Username" name="username"
-                        :rules="[{ required: true, message: 'Please input your username!' }]">
-                        <a-input v-model:value="formState.username" placeholder="username">
-                            <template #prefix>
-                                <UserOutlined class="site-form-item-icon" />
-                            </template>
-                        </a-input>
-                    </a-form-item>
-                    <a-form-item label="Password" name="password"
-                        :rules="[{ required: true, message: 'Please input your password!' }]">
-                        <a-input-password v-model:value="formState.password" placeholder="password">
-                            <template #prefix>
-                                <LockOutlined class="site-form-item-icon" />
-                            </template>
-                        </a-input-password>
-                    </a-form-item>
-                    <a-form-item>
-                        <a-form-item name="remember" no-style>
-                            <a-checkbox v-model:checked="formState.remember">Remember me</a-checkbox>
+            <a-layout-content>
+                <div class="icarus-login">
+                    <div class="icarus-title">Login</div>
+                    <a-form :model="formState" name="normal_login" autocomplete="off" @finish="onFinish"
+                        @finishFailed="onFinishFailed" class="login-form">
+                        <a-form-item label="Username" name="username"
+                            :rules="[{ required: true, message: 'Please input your username!' }]">
+                            <a-input v-model:value="formState.username" placeholder="username">
+                                <template #prefix>
+                                    <UserOutlined class="site-form-item-icon" />
+                                </template>
+                            </a-input>
                         </a-form-item>
-                        <a class="login-form-forgot" href="">Forgot password</a>
-                    </a-form-item>
-                    <a-form-item>
-                        <a-button :disabled="disabled" type="primary" html-type="submit" class="login-form-button">
-                            Log in
-                        </a-button>
-                        <span :style="{ float: 'right' }">Or
-                            <a href="">register now!</a>
-                        </span>
-                    </a-form-item>
-                </a-form>
-            </div>
-        </a-layout-content>
-        <!-- <a-layout-footer style="text-align: center">
+                        <a-form-item label="Password" name="password"
+                            :rules="[{ required: true, message: 'Please input your password!' }]">
+                            <a-input-password v-model:value="formState.password" placeholder="password">
+                                <template #prefix>
+                                    <LockOutlined class="site-form-item-icon" />
+                                </template>
+                            </a-input-password>
+                        </a-form-item>
+                        <a-form-item>
+                            <a-form-item name="remember" no-style>
+                                <a-checkbox v-model:checked="formState.remember">Remember me</a-checkbox>
+                            </a-form-item>
+                            <a class="login-form-forgot" href="">Forgot password</a>
+                        </a-form-item>
+                        <a-form-item>
+                            <a-button :disabled="disabled" type="primary" html-type="submit" class="login-form-button">
+                                Log in
+                            </a-button>
+                            <span :style="{ float: 'right' }">Or
+                                <a href="">register now!</a>
+                            </span>
+                        </a-form-item>
+                    </a-form>
+                </div>
+            </a-layout-content>
+            <!-- <a-layout-footer style="text-align: center">
         </a-layout-footer> -->
-    </a-layout>
+        </a-layout>
+    </div>
 </template>
 <script>
-import { reactive, defineComponent, computed } from 'vue';
+import { reactive, defineComponent, computed, watch, onBeforeUnmount, onMounted } from 'vue';
 import { message } from 'ant-design-vue';
-import { UserOutlined, LockOutlined } from '@ant-design/icons-vue';
+import { UserOutlined, LockOutlined, WindowsFilled } from '@ant-design/icons-vue';
 
 export default defineComponent({
     components: {
@@ -55,10 +57,22 @@ export default defineComponent({
         LockOutlined,
     },
     setup() {
+        let fullWidth = document.documentElement.clientWidth;
+        let fullHeight = document.documentElement.clientHeight;
         const formState = reactive({
             username: '',
             password: '',
             remember: true
+        });
+        function handleResize() {
+            fullHeight = document.documentElement.clientHeight
+            fullWidth = document.documentElement.clientWidth
+        }
+        onMounted(() => {
+            window.addEventListener("resize", handleResize)
+        });
+        onBeforeUnmount(() => {
+            window.removeEventListener("resize", handleResize)
         });
         const onFinish = (values) => {
             console.log('Success: ', values);
@@ -74,18 +88,29 @@ export default defineComponent({
             formState,
             onFinish,
             onFinishFailed,
-            disabled
+            disabled,
+            fullWidth,
+            fullHeight
         };
     },
 });
 </script>
 <style scoped>
-.login-wrapper {
+
+.register {
     position: fixed;
-    width: 100%;
-    height: 100%;
-    background-size: 100%;
-    background-image: url("../assets/img/2724638.jpg");
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+.login-wrapper {
+    position: absolute;
+    width: 101%;
+    height: 101%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url("../assets/img/icarus-login-bg.jpg");
 }
 
 .icarus-login {
