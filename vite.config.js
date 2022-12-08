@@ -7,8 +7,12 @@ export default defineConfig({
   plugins: [vue()],
   server: {
     proxy: {
-      '/api': {
+      '/v1/api/user': {
         target: "http://localhost:8080",
+        changeOrigin: true,
+      },
+      '/v1/inner': {
+        target: "http://0.0.0.0:80",
         changeOrigin: true,
       }
     }
