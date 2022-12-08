@@ -11,7 +11,10 @@
     "electron:serve": "concurrently -k \"npm run dev\" \"npm run electron\""
   },
   "dependencies": {
-    "vue": "^3.2.41"
+    "ant-design-vue": "^3.2.15",
+    "pinia": "^2.0.27",
+    "vue": "^3.2.41",
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.2.0",
