@@ -50,6 +50,7 @@
 import { reactive, defineComponent, computed, watch, onBeforeUnmount, onMounted } from 'vue';
 import { message } from 'ant-design-vue';
 import { UserOutlined, LockOutlined, WindowsFilled } from '@ant-design/icons-vue';
+import { userLogin } from '../store/modules/user'
 
 export default defineComponent({
     components: {
@@ -76,6 +77,8 @@ export default defineComponent({
         });
         const onFinish = (values) => {
             console.log('Success: ', values);
+            userLogin(values)
+            
         };
         const onFinishFailed = (errorInfo) => {
             console.log('Failed: ', errorInfo);
