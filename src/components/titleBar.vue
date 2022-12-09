@@ -1,38 +1,58 @@
-<script setup>
-// const { ipcRenderer } = window.require('electron')
-
-function toMin() {
-    // ipcRenderer.send('min-app')
-}
-
-function toClose() {
-    // ipcRenderer.send('close-app')
-}
-
-</script>
-
 <template>
-    <div class="header">
-        <span class="float-right">
-            <i @click="toMin"></i>
-            <i @click="toClose"></i>
-        </span>
-    </div>
+    <a-tabs tabBarGutter="1" size="small" v-model:activeKey="activeKey" hide-add type="editable-card" @edit="onEdit">
+        <a-tab-pane v-for="pane in panes" :key="pane.key" :tab="pane.title" :closable="pane.closable">
+            {{ pane.content }}
+        </a-tab-pane>
+    </a-tabs>
 </template>
-
 <script>
-export default {
-    name: 'titleBar',
-    methods: {}
-}
-</script>
+import { defineComponent, ref } from 'vue'
 
-<style scoped>
-.header {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    -webkit-app-region: drag;
-}
-</style>
+export default defineComponent({
+    setup() {
+        const panes = ref(new Array(2).fill(null).map((_, index) => {
+            const id = String(index + 1);
+            return {
+                title: `Tab ${id}`,
+                content: `Content of Tab Pane ${id}`,
+                key: id,
+            };
+        }));
+        const activeKey = ref(panes.value[0].key);
+        const newTabIndex = ref(0);
+        const add = () => {
+            activeKey.value = `newTab${newTabIndex.value++}`;
+            panes.value.push({
+                title: `New Tab ${activeKey.value}`,
+                content: `New Content of Tab Pane ${activeKey.value}`,
+                key: activeKey.value,
+            });
+        };
+        const remove = targetKey => {
+            let lastIndex = 0;
+            panes.value.forEach((pane, i) => {
+                if (pane.key === targetKey) {
+                    lastIndex = i - 1;
+                }
+            });
+            panes.value = panes.value.filter(pane => pane.key !== targetKey);
+            if (panes.value.length && activeKey.value === targetKey) {
+                if (lastIndex >= 0) {
+                    activeKey.value = panes.value[lastIndex].key;
+                } else {
+                    activeKey.value = panes.value[0].key;
+                }
+            }
+        };
+        const onEdit = targetKey => {
+            remove(targetKey);
+        };
+        return {
+            panes,
+            activeKey,
+            onEdit,
+            add,
+        };
+    },
+})
+</script>

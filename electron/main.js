@@ -12,7 +12,7 @@ const createWindow = () => {
         width: 1000,
         minHeight: 800,
         height: 800,
-        frame: false,
+        frame: true,
         titleBarStyle: 'customButtonsOnHover',
         titleBarOverlay: true,
         userContentSize: true,
