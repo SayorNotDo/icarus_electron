@@ -1,7 +1,8 @@
-const { app, BrowserWindow, Menu } = require('electron');
+const { app, BrowserWindow, Menu, ipcMain } = require('electron');
 const path = require("path");
 
 const mode = "development";
+
 
 Menu.setApplicationMenu(null);
 
@@ -11,7 +12,10 @@ const createWindow = () => {
         width: 1000,
         minHeight: 800,
         height: 800,
-        frame: true,
+        frame: false,
+        titleBarStyle: 'customButtonsOnHover',
+        titleBarOverlay: true,
+        userContentSize: true,
         contextIsolation: false,
         nodeIntegration: true,
         webPreferences: {
@@ -24,6 +28,14 @@ const createWindow = () => {
     if (mode === "development") {
         win.webContents.openDevTools();
     }
+    // ipcMain.on('close-app', () => {
+    //     if (win) {
+    //         win.close();
+    //     }
+    // })
+    // ipcMain.on('min-app', () => {
+    //     win.minimize()
+    // })
 };
 
 app.whenReady().then(() => {

@@ -1,5 +1,4 @@
 <template>
-    <!-- <Header /> -->
     <div>
         <a-layout class="wrapper">
             <a-layout-sider :collapsed="true" :trigger="null" collapsible>
@@ -55,8 +54,6 @@
                     <!-- <menu-unfold-outlined v-if="collapsed" class="trigger" @click="() => (collapsed = !collapsed)" />
                     <menu-unfold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)" /> -->
                 <!-- </a-layout-header> -->
-                <a-layout-header style="height:4%">
-                </a-layout-header>
                 <a-layout-content
                     :style="{ margin: '10px 10px', padding: '24px', background: '#fff', minHeight: '280px' }">
                     Content
@@ -66,13 +63,11 @@
     </div>
 </template>
 <script>
-import titleBar from '../components/titleBar.vue'
 import { DashOutlined, HomeOutlined, ScheduleOutlined, CodeOutlined, BugOutlined, BarChartOutlined, SettingOutlined, UserOutlined, MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons-vue';
 import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
     components: {
-        titleBar,
         DashOutlined,
         HomeOutlined,
         ScheduleOutlined,
@@ -124,7 +119,6 @@ export default defineComponent({
     height: 32px;
     background: rgba(255, 255, 255, 0.3);
     margin: 16px;
-    margin-top: 32px ;
 }
 
 .site-layout .site-layout-background {
