@@ -47,9 +47,9 @@
     </div>
 </template>
 <script>
-import { reactive, defineComponent, computed, watch, onBeforeUnmount, onMounted } from 'vue';
+import { reactive, defineComponent, computed, onBeforeUnmount, onMounted } from 'vue';
 import { message } from 'ant-design-vue';
-import { UserOutlined, LockOutlined, WindowsFilled } from '@ant-design/icons-vue';
+import { UserOutlined, LockOutlined } from '@ant-design/icons-vue';
 import { userLogin } from '../store/modules/user'
 
 export default defineComponent({
@@ -99,13 +99,6 @@ export default defineComponent({
 });
 </script>
 <style scoped>
-
-.register {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-}
 .login-wrapper {
     position: absolute;
     width: 101%;

@@ -7,8 +7,10 @@ Menu.setApplicationMenu(null);
 
 const createWindow = () => {
     const win = new BrowserWindow({
-        width: 800,
-        height: 600,
+        minWidth: 1000,
+        width: 1000,
+        minHeight: 800,
+        height: 800,
         frame: true,
         contextIsolation: false,
         nodeIntegration: true,
