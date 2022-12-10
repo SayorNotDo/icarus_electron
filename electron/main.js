@@ -23,7 +23,8 @@ const createWindow = () => {
         }
     });
 
-    win.loadURL(mode === "development" ? "http://localhost:5173" : `file://${path.join(__dirname, '../dist/index.html')}`)
+    ipcMain.handle('ping', () => 'pong');
+    win.loadURL(mode === "development" ? "http://localhost:5173" : `file://${path.join(__dirname, '../dist/index.html')}`);
 
     if (mode === "development") {
         win.webContents.openDevTools();

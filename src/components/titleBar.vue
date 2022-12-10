@@ -10,11 +10,11 @@ import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
     setup() {
-        const panes = ref(new Array(2).fill(null).map((_, index) => {
-            const id = String(index + 1);
+        const panes = ref(new Array(1).fill(null).map((_, index) => {
+            const id = "Dashboard";
             return {
-                title: `Tab ${id}`,
-                content: `Content of Tab Pane ${id}`,
+                title: `Dashboard`,
+                content: `Content of Tab Pane Dashboard`,
                 key: id,
             };
         }));

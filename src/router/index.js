@@ -1,9 +1,44 @@
 import { createRouter, createWebHashHistory } from "vue-router";
+import Home from '../views/home.vue'
 
 const routes = [
     {
         path: '/',
-        redirect: '/dashboard',
+        name: 'Home',
+        component: Home,
+        children: [
+            {
+                path: '/dashboard',
+                meta: {
+                    title: 'Dashboard',
+                },
+                component: () => import('../views/dashboard.vue')
+            }, {
+                path: '/schedule',
+                meta: {
+                    title: 'Schedule',
+                },
+                component: () => import('../views/schedule.vue')
+            }, {
+                path: '/execute',
+                meta: {
+                    title: 'Execute',
+                },
+                component: () => import('../views/execute.vue')
+            }, {
+                path: '/debug',
+                meta: {
+                    title: 'Job',
+                },
+                component: () => import('../views/debug.vue')
+            }, {
+                path: 'chart',
+                meta: {
+                    title: 'Chart',
+                },
+                component: () => import('../views/chart.vue')
+            }
+        ]
     }, {
         path: '/login',
         name: 'Login',
@@ -11,13 +46,6 @@ const routes = [
             title: 'Login'
         },
         component: () => import("../views/login.vue")
-    }, {
-        path: '/dashboard',
-        name: 'Dashboard',
-        meta: {
-            title: 'Dashboard'
-        },
-        component: () => import("../views/dashboard.vue")
     }
 ];
 

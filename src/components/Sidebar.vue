@@ -3,22 +3,27 @@
         <div class="logo" />
         <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
             <a-menu-item key="1" title="Dashboard">
+                <router-link to="/dashboard"></router-link>
                 <home-outlined />
                 <span>Dashboard</span>
             </a-menu-item>
             <a-menu-item key="2" title="Schedule">
+                <router-link to="/schedule"></router-link>
                 <schedule-outlined />
                 <span>Schedule</span>
             </a-menu-item>
             <a-menu-item key="3" title="Execute">
+                <router-link to="/execute"></router-link>
                 <code-outlined />
                 <span>Execute</span>
             </a-menu-item>
             <a-menu-item key="4" title="Debug">
+                <router-link to="/debug"></router-link>
                 <bug-outlined />
                 <span>Debug</span>
             </a-menu-item>
             <a-menu-item key="5" title="Chart">
+                <router-link to="/chart"></router-link>
                 <bar-chart-outlined />
                 <span>Chart</span>
             </a-menu-item>
@@ -49,8 +54,13 @@
     </a-layout-sider>
 </template>
 <script>
-import { DashOutlined, HomeOutlined, ScheduleOutlined, CodeOutlined, BugOutlined, BarChartOutlined, SettingOutlined, UserOutlined, MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons-vue';
-import { defineComponent, ref } from 'vue'
+import {
+    DashOutlined, HomeOutlined, ScheduleOutlined, CodeOutlined,
+    BugOutlined, BarChartOutlined, SettingOutlined, UserOutlined,
+    MenuUnfoldOutlined, MenuFoldOutlined
+} from '@ant-design/icons-vue';
+import { defineComponent, ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router'
 
 export default defineComponent({
     components: {
@@ -66,6 +76,8 @@ export default defineComponent({
         MenuFoldOutlined,
     },
     setup() {
+        const router = useRouter();
+        const route = useRoute();
         return {
             selectedKeys: ref(['1']),
             collapsed: ref(false),
@@ -74,7 +86,6 @@ export default defineComponent({
 })
 </script>
 <style scoped>
-
 .content {
     width: 100%;
     height: 100%;
