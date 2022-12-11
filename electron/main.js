@@ -14,10 +14,6 @@ const mode = "development";
 
 Menu.setApplicationMenu(null);
 
-function showOnlineStatus() {
-  new Notification({ title: "", body: "" }).show();
-}
-
 async function handleFileOpen() {
   const { canceled, filePaths } = await dialog.showOpenDialog();
   if (canceled) {
@@ -113,7 +109,6 @@ app.whenReady().then(() => {
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
-  showOnlineStatus()
 });
 
 app.on("window-all-closed", () => {
