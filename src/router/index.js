@@ -5,6 +5,7 @@ const routes = [
     {
         path: '/',
         name: 'Home',
+        redirect: "/dashboard",
         component: Home,
         children: [
             {
@@ -32,11 +33,23 @@ const routes = [
                 },
                 component: () => import('../views/debug.vue')
             }, {
-                path: 'chart',
+                path: '/chart',
                 meta: {
                     title: 'Chart',
                 },
                 component: () => import('../views/chart.vue')
+            }, {
+                path: '/profile',
+                meta: {
+                    title: 'Profile',
+                },
+                component: () => import('../views/profile.vue')
+            }, {
+                path: '/setting',
+                meta: {
+                    title: 'Setting',
+                },
+                component: () => import('../views/setting.vue')
             }
         ]
     }, {

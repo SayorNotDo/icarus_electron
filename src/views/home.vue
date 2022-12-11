@@ -22,14 +22,26 @@ export default defineComponent({
         Sidebar
     },
     setup() {
-        console.log("123");
-        console.log(window.location)
         return {
         }
     },
 })
 </script>
 <style scoped>
+@media (prefer-color-scheme: dark) {
+    body {
+        background: #333;
+        color: white;
+    }
+}
+
+@media (prefer-color-scheme: light) {
+    body {
+        background: #ddd;
+        color: white;
+    }
+}
+
 .wrapper {
     position: absolute;
     width: 100%;
