@@ -33,11 +33,11 @@ const routes = [
                 },
                 component: () => import('../views/debug.vue')
             }, {
-                path: '/chart',
+                path: '/analystic',
                 meta: {
-                    title: 'Chart',
+                    title: 'Analystic',
                 },
-                component: () => import('../views/chart.vue')
+                component: () => import('../views/analystic.vue')
             }, {
                 path: '/profile',
                 meta: {

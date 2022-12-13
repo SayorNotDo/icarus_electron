@@ -22,10 +22,14 @@
                 <bug-outlined />
                 <span>Debug</span>
             </a-menu-item>
-            <a-menu-item key="5" title="Chart">
-                <router-link to="/chart"></router-link>
+            <a-menu-item key="5" title="Analystic">
+                <router-link to="/analystic"></router-link>
                 <bar-chart-outlined />
-                <span>Chart</span>
+                <span>Analystic</span>
+            </a-menu-item>
+            <a-menu-item key="6" title="Import Framework">
+                <ImportOutlined />
+                <span>Import Framework</span>
             </a-menu-item>
         </a-menu>
         <a-menu v-model:selectKeys="selectedKeys" theme="dark" mode="inline"
@@ -57,7 +61,7 @@
 import {
     DashOutlined, HomeOutlined, ScheduleOutlined, CodeOutlined,
     BugOutlined, BarChartOutlined, SettingOutlined, UserOutlined,
-    MenuUnfoldOutlined, MenuFoldOutlined
+    MenuUnfoldOutlined, MenuFoldOutlined, ImportOutlined
 } from '@ant-design/icons-vue';
 import { defineComponent, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router'
@@ -74,13 +78,13 @@ export default defineComponent({
         UserOutlined,
         MenuUnfoldOutlined,
         MenuFoldOutlined,
+        ImportOutlined,
     },
     setup() {
         const router = useRouter();
         const route = useRoute();
         return {
             selectedKeys: ref(['1']),
-            collapsed: ref(false),
         }
     },
 })
