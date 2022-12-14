@@ -3,28 +3,37 @@
         <a-button @click="showModal">Device Connect</a-button>
         <a-modal :destroyOnClose=true v-model:visible="visible" title="Device Connect" width="100%" @ok="handleOk"
             :maskClosable=false>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
             <template #footer>
-                <a-button style="float: left;" @click="deviceConnect">Test Connect</a-button>
+                <a-button v-if="current == steps.length - 1" style="float: left;" @click="deviceConnect">Test
+                    Connect</a-button>
                 <div v-if="connectStatus" style="float: left; margin: 0.5%; color: #52c41a;">
                     <CheckCircleFilled />
                 </div>
                 <a-button @click="handleCancel">Cancel</a-button>
-                <a-button type="primary" @click="handleOk">Ok</a-button>
+                <a-button type="primary" @click="handleOk" :disabled="!connectStatus">Ok</a-button>
             </template>
+            <Stepsbar />
         </a-modal>
     </div>
 </template>
 <script>
-import { defineComponent, ref } from 'vue';
-import { CheckCircleFilled } from '@ant-design/icons-vue'
+import { defineComponent, ref, provide } from 'vue';
+import { CheckCircleFilled } from '@ant-design/icons-vue';
+import Stepsbar from './DeviceConnectSteps.vue';
 export default defineComponent({
     components: {
-        CheckCircleFilled
+        CheckCircleFilled,
+        Stepsbar
     },
     setup() {
+        const steps = [
+            { title: 'First', content: 'First-content' },
+            { title: 'Second', content: 'Second-content' },
+            { title: 'Last', content: 'Last-content' },
+        ];
+        const current = ref(0);
+        provide('steps', steps);
+        provide('current', current);
         const visible = ref(false);
         const connectStatus = ref(false);
         const handleOk = (e) => {
@@ -50,7 +59,9 @@ export default defineComponent({
             showModal,
             deviceConnect,
             visible,
-            connectStatus
+            connectStatus,
+            steps,
+            current
         }
     }
 })
