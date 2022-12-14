@@ -1,8 +1,8 @@
 <template>
     <div>
-        <a-row style="padding:2%">
+        <a-row style="padding:1%">
             <a-col :span="1">
-                <a-button>Device Connect</a-button>
+                <DeviceConnectModal />
             </a-col>
             <a-col :span="1" :offset="21">
                 <a-button type="circle">
@@ -26,7 +26,7 @@
                         <a-row>
                             <a-col flex="3">
                                 <a-card title="CASE FIELD" size="small" :bordered="false">
-                                    <a-textarea placeholder="" :autoSize="{ minRows: 18, maxRows: 18 }"
+                                    <a-textarea placeholder="" :autoSize="{ minRows: 17, maxRows: 17 }"
                                         :bordered="false"></a-textarea>
                                 </a-card>
                             </a-col>
@@ -52,9 +52,10 @@
     </div>
 </template>
 <script>
-import { defineComponent, onMounted, ref } from 'vue';
+import { defineComponent, ref } from 'vue';
 import MethodTree from '../components/MethodTree.vue';
 import Terminal from '../components/Terminal.vue';
+import DeviceConnectModal from '../components/DeviceConnectModal.vue';
 import { PlayCircleOutlined, PauseCircleOutlined } from '@ant-design/icons-vue';
 
 export default defineComponent({
@@ -62,9 +63,13 @@ export default defineComponent({
         PlayCircleOutlined,
         PauseCircleOutlined,
         MethodTree,
-        Terminal
+        Terminal,
+        DeviceConnectModal
     },
-    setup() { },
+    setup() {
+        return {
+        }
+    },
 })
 </script>
 <style scoped>

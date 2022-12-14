@@ -15,9 +15,9 @@ export default defineComponent({
             var fitAddon = new FitAddon();
             var term = new Terminal({
                 rendererType: 'canvas',
-                rows: 9,
+                rows: 10,
                 convertEol: true,
-                disableStdin: false,
+                disableStdin: true,
                 cursorStyle: 'underline',
                 cursorBlink: true,
                 theme: {

@@ -47,10 +47,10 @@ function onlineStatus() {
 
 const createWindow = () => {
   const win = new BrowserWindow({
-    minWidth: 1000,
-    width: 1000,
-    minHeight: 800,
-    height: 800,
+    minWidth: 1024,
+    width: 1024,
+    minHeight: 768,
+    height: 768,
     frame: true,
     titleBarStyle: "hidden",
     titleBarOverlay: true,

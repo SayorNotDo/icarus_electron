@@ -27,9 +27,9 @@
                 <bar-chart-outlined />
                 <span>Analystic</span>
             </a-menu-item>
-            <a-menu-item key="6" title="Import Framework">
+            <a-menu-item key="6" title="Test Framework Import">
                 <ImportOutlined />
-                <span>Import Framework</span>
+                <span>Test Framework Import</span>
             </a-menu-item>
         </a-menu>
         <a-menu v-model:selectKeys="selectedKeys" theme="dark" mode="inline"
