@@ -2,11 +2,10 @@
     <div>
         <a-layout class="wrapper">
             <Sidebar />
-            <a-layout class="content">
+            <a-layout>
                 <a-layout-header style="height:4%">
                 </a-layout-header>
-                <a-layout-content
-                    :style="{ padding: '1px', background: 'rgba(255, 255, 255, 0.85)', minHeight: '280px' }">
+                <a-layout-content class="content">
                     <router-view></router-view>
                 </a-layout-content>
             </a-layout>
@@ -48,6 +47,15 @@ export default defineComponent({
     height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
-    -webkit-app-region: drag;
+}
+
+header {
+    -webkit-app-region: drag
+}
+
+
+.content {
+    padding: 1px;
+    background: rgba(255, 255, 255, 0.5);
 }
 </style>

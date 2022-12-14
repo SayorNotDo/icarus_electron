@@ -19,31 +19,32 @@
                 </a-button>
             </a-col>
         </a-row>
-        <a-row style="padding:2%">
+        <a-row style="padding:1%">
             <a-col flex="auto">
-                <a-badge-ribbon text="CASE FIELD">
-                    <a-row>
-                        <a-col flex="3">
-                            <a-card title="CASE FIELD" size="small">
-                                <a-textarea placeholder="" :autoSize="{ minRows: 15, maxRows: 20 }"
-                                    :bordered="false"></a-textarea>
-                            </a-card>
-                        </a-col>
-                        <a-col flex="2">
-                            <a-card title="COMPONENT" size="small" style="height:100%">
-                                <MethodTreeVue />
-                            </a-card>
-                        </a-col>
-                    </a-row>
+                <a-badge-ribbon text="CASE">
+                    <a-card :hoverable="true">
+                        <a-row>
+                            <a-col flex="3">
+                                <a-card title="CASE FIELD" size="small" :bordered="false">
+                                    <a-textarea placeholder="" :autoSize="{ minRows: 18, maxRows: 18 }"
+                                        :bordered="false"></a-textarea>
+                                </a-card>
+                            </a-col>
+                            <a-col flex="2">
+                                <a-card title="COMPONENT" size="small" :bordered="false" style="height:100%">
+                                    <MethodTree />
+                                </a-card>
+                            </a-col>
+                        </a-row>
+                    </a-card>
                 </a-badge-ribbon>
             </a-col>
         </a-row>
-        <a-row style="padding:2%">
+        <a-row style="padding:1%">
             <a-col flex="auto">
-                <a-badge-ribbon text="DEBUG CONSOLE">
-                    <a-card title="DEBUG CONSOLE" size="small">
-                        <a-textarea placeholder="" :autoSize="{ minRows: 5, maxRows: 20 }"
-                            :bordered="false"></a-textarea>
+                <a-badge-ribbon text="DEBUG">
+                    <a-card title="DEBUG CONSOLE" size="small" :hoverable="true">
+                        <Terminal />
                     </a-card>
                 </a-badge-ribbon>
             </a-col>
@@ -51,18 +52,28 @@
     </div>
 </template>
 <script>
-import { defineComponent } from 'vue';
-import MethodTreeVue from '../components/MethodTree.vue';
+import { defineComponent, onMounted, ref } from 'vue';
+import MethodTree from '../components/MethodTree.vue';
+import Terminal from '../components/Terminal.vue';
 import { PlayCircleOutlined, PauseCircleOutlined } from '@ant-design/icons-vue';
 
 export default defineComponent({
     components: {
         PlayCircleOutlined,
         PauseCircleOutlined,
-        MethodTreeVue,
+        MethodTree,
+        Terminal
     },
-    setup() {
-
-    },
+    setup() { },
 })
 </script>
+<style scoped>
+:deep(.ant-card-head) {
+    background: #001529;
+    color: #fff;
+}
+
+:deep(.ant-card-body) {
+    padding: 0%;
+}
+</style>
