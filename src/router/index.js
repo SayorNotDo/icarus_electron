@@ -1,70 +1,84 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import Home from '../views/home.vue'
+import Home from "../views/home.vue";
 
 const routes = [
-    {
-        path: '/',
-        name: 'Home',
-        redirect: "/dashboard",
-        component: Home,
-        children: [
-            {
-                path: '/dashboard',
-                meta: {
-                    title: 'Dashboard',
-                },
-                component: () => import('../views/dashboard.vue')
-            }, {
-                path: '/schedule',
-                meta: {
-                    title: 'Schedule',
-                },
-                component: () => import('../views/schedule.vue')
-            }, {
-                path: '/execute',
-                meta: {
-                    title: 'Execute',
-                },
-                component: () => import('../views/execute.vue')
-            }, {
-                path: '/debug',
-                meta: {
-                    title: 'Job',
-                },
-                component: () => import('../views/debug.vue')
-            }, {
-                path: '/analystic',
-                meta: {
-                    title: 'Analystic',
-                },
-                component: () => import('../views/analystic.vue')
-            }, {
-                path: '/profile',
-                meta: {
-                    title: 'Profile',
-                },
-                component: () => import('../views/profile.vue')
-            }, {
-                path: '/setting',
-                meta: {
-                    title: 'Setting',
-                },
-                component: () => import('../views/setting.vue')
-            }
-        ]
-    }, {
-        path: '/login',
-        name: 'Login',
+  {
+    path: "/",
+    name: "Home",
+    redirect: "/dashboard",
+    component: Home,
+    children: [
+      {
+        path: "/dashboard",
         meta: {
-            title: 'Login'
+          title: "Dashboard",
         },
-        component: () => import("../views/login.vue")
-    }
+        component: () => import("../views/dashboard.vue"),
+      },
+      {
+        path: "/schedule",
+        meta: {
+          title: "Schedule",
+        },
+        component: () => import("../views/schedule.vue"),
+      },
+      {
+        path: "/execute",
+        meta: {
+          title: "Execute",
+        },
+        component: () => import("../views/execute.vue"),
+      },
+      {
+        path: "/debug",
+        meta: {
+          title: "Job",
+        },
+        component: () => import("../views/debug.vue"),
+      },
+      {
+        path: "/analystic",
+        meta: {
+          title: "Analystic",
+        },
+        component: () => import("../views/analystic.vue"),
+      },
+      {
+        path: "/framework",
+        meta: {
+          title: "Framework",
+        },
+        component: () => import("../views/framework.vue"),
+      },
+      {
+        path: "/profile",
+        meta: {
+          title: "Profile",
+        },
+        component: () => import("../views/profile.vue"),
+      },
+      {
+        path: "/setting",
+        meta: {
+          title: "Setting",
+        },
+        component: () => import("../views/setting.vue"),
+      },
+    ],
+  },
+  {
+    path: "/login",
+    name: "Login",
+    meta: {
+      title: "Login",
+    },
+    component: () => import("../views/login.vue"),
+  },
 ];
 
 const router = createRouter({
-    history: createWebHashHistory(),
-    routes
+  history: createWebHashHistory(),
+  routes,
 });
 
 // router.beforeEach((to, from, next) => {

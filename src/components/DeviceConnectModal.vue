@@ -1,12 +1,13 @@
 <template>
     <div>
-        <a-button @click="showModal">Device Connect</a-button>
+        <a-button @click="showModal">Test Config</a-button>
         <a-modal :destroyOnClose=true v-model:visible="visible" title="Device Connect" width="100%" @ok="handleOk"
             :maskClosable=false>
             <template #footer>
                 <a-button v-if="current == steps.length - 1" style="float: left;" @click="deviceConnect">Test
                     Connect</a-button>
-                <div v-if="connectStatus" style="float: left; margin: 0.5%; color: #52c41a;">
+                <div v-if="connectStatus && current == steps.length - 1"
+                    style="float: left; margin: 0.5%; color: #52c41a;">
                     <CheckCircleFilled />
                 </div>
                 <a-button @click="handleCancel">Cancel</a-button>
@@ -17,7 +18,7 @@
     </div>
 </template>
 <script>
-import { defineComponent, ref, provide } from 'vue';
+import { defineComponent, ref, inject } from 'vue';
 import { CheckCircleFilled } from '@ant-design/icons-vue';
 import Stepsbar from './DeviceConnectSteps.vue';
 export default defineComponent({
@@ -26,16 +27,10 @@ export default defineComponent({
         Stepsbar
     },
     setup() {
-        const steps = [
-            { title: 'First', content: 'First-content' },
-            { title: 'Second', content: 'Second-content' },
-            { title: 'Last', content: 'Last-content' },
-        ];
-        const current = ref(0);
-        provide('steps', steps);
-        provide('current', current);
+        const steps = inject('steps');
+        const current = inject('current');
+        const connectStatus = inject('connectStatus');
         const visible = ref(false);
-        const connectStatus = ref(false);
         const handleOk = (e) => {
             console.log(e)
             visible.value = false;
