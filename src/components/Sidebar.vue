@@ -22,12 +22,16 @@
                 <bug-outlined />
                 <span>Debug</span>
             </a-menu-item>
-            <a-menu-item key="5" title="Analystic">
+            <a-menu-item key="5" title="Resource">
+                <router-link to="/resource"></router-link>
+                <BuildOutlined />
+            </a-menu-item>
+            <a-menu-item key="6" title="Analystic">
                 <router-link to="/analystic"></router-link>
                 <bar-chart-outlined />
                 <span>Analystic</span>
             </a-menu-item>
-            <a-menu-item key="6" title="Framework">
+            <a-menu-item key="7" title="Framework">
                 <router-link to="/framework"></router-link>
                 <ImportOutlined />
                 <span>Framework</span>
@@ -62,7 +66,7 @@
 import {
     DashOutlined, HomeOutlined, ScheduleOutlined, CodeOutlined,
     BugOutlined, BarChartOutlined, SettingOutlined, UserOutlined,
-    MenuUnfoldOutlined, MenuFoldOutlined, ImportOutlined
+    MenuUnfoldOutlined, MenuFoldOutlined, ImportOutlined, BuildOutlined
 } from '@ant-design/icons-vue';
 import { defineComponent, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router'
@@ -80,6 +84,7 @@ export default defineComponent({
         MenuUnfoldOutlined,
         MenuFoldOutlined,
         ImportOutlined,
+        BuildOutlined
     },
     setup() {
         const router = useRouter();

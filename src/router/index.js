@@ -64,6 +64,13 @@ const routes = [
         },
         component: () => import("../views/setting.vue"),
       },
+      {
+        path: "/resource",
+        meta: {
+          title: "Resource",
+        },
+        component: () => import("../views/resource.vue"),
+      },
     ],
   },
   {

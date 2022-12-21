@@ -1,13 +1,34 @@
 <template>
-    <div :style="{ margin: '12px', padding: '12px' }">
-        <a-row justify="center" :gutter="{ xs: 16, sm: 24, md: 32, lg: 48 }">
+    <div style="padding: 12px; height: 100%;">
+        <a-row class="line-margin" justify="space-around" :gutter="{ xs: 2, sm: 4, md: 8, lg: 16 }">
+            <a-col style="width: 60%">
+                <PictureCardVue></PictureCardVue>
+            </a-col>
+            <a-col style="width: 40%;">
+                <a-col>
+                    <PictureCardVue />
+                </a-col>
+                <a-col class="line-margin">
+                    <PictureCardVue />
+                </a-col>
+            </a-col>
+        </a-row>
+        <a-row class="line-margin" justify="start" :wrap="false" :gutter="{ xs: 1, sm: 2, md: 4, lg: 8 }">
             <a-col>
-                <PictureCardVue />
+                <PictureCardVue></PictureCardVue>
             </a-col>
             <a-col>
-                <PictureCardVue />
+                <PictureCardVue></PictureCardVue>
             </a-col>
             <a-col>
+                <PictureCardVue></PictureCardVue>
+            </a-col>
+            <a-col>
+                <PictureCardVue></PictureCardVue>
+            </a-col>
+        </a-row>
+        <a-row class="line-margin">
+            <a-col style="width: 100%;">
                 <PictureCardVue />
             </a-col>
         </a-row>
@@ -29,5 +50,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
+.line-margin {
+    margin-top: 2%;
+}
 </style>
